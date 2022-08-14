@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset"UTF-8">
+    <title>TankMILU BLOG</title>
+</head>
+<body>
+    <h1>TANKMILU</h1>
+
+{% for po in object_list %}
+    <hr/>
+    <h2><font size="4em">[{{ po.pk }}]</font>  {{ po.title }}</h2>
+    <h4>{{ po.created_at }}</h4>
+    <p>{{ po.content }}</p>
+{% endfor %}
+</body>
+</html>
