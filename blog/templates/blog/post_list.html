@@ -9,9 +9,11 @@
 
 {% for po in object_list %}
     <hr/>
+    <a href="{{ po.get_detail_url }}">
     <h2><font size="4em">[{{ po.pk }}]</font>  {{ po.title }}</h2>
     <h4>{{ po.created_at }}</h4>
     <p>{{ po.content }}</p>
+    </a>
 {% endfor %}
 </body>
 </html>

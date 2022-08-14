@@ -9,3 +9,6 @@ class Post(models.Model):
 
     def __str__(self):
         return f'[{self.pk}]{self.title}' #f-스트링. {} 안에 변수 값을 출력
+
+    def get_detail_url(self):
+        return f'/blog/{self.pk}'
