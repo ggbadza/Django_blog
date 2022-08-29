@@ -4,6 +4,7 @@ from django.db import models
 class Post(models.Model):
     title=models.CharField(max_length=30)
     content=models.TextField()
+    head_image = models.ImageField(upload_to='blog/images/%Y_%m_%d/', blank=True) #폴더 여러개로 구분시켜야지 성능 영향 X, blank는 비어도 된다는 뜻
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 

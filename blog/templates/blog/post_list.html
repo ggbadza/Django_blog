@@ -42,7 +42,11 @@
                 {% for po in object_list %}
                   {% if forloop.first %}
                   <div class="card mb-4">
+                    {% if po.head_image %}
+                    <a href="#!"><img class="card-img-top" src="{{ po.head_image.url }}" alt="..." /></a>
+                    {% else %}
                     <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                    {% endif %}
                     <div class="card-body">
                         <div class="small text-muted">{{ po.created_at }}</div>
                         <h2 class="card-title">{{ po.title }}</h2>
@@ -56,7 +60,11 @@
                       <div class="col-lg-6">
                           <!-- Blog post-->
                           <div class="card mb-4">
-                              <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                            {% if po.head_image %}
+                            <a href="#!"><img class="card-img-top" src="{{ po.head_image.url }}"  alt="..." /></a>
+                            {% else %}
+                            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                            {% endif %}
                               <div class="card-body">
                                   <div class="small text-muted">{{ po.created_at }}</div>
                                   <h2 class="card-title h4">{{ po.title }}</h2>
