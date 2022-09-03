@@ -50,7 +50,7 @@
                     <div class="card-body">
                         <div class="small text-muted">{{ po.created_at }}</div>
                         <h2 class="card-title">{{ po.title }}</h2>
-                        <p class="card-text">{{ po.content }}</p>
+                        <p class="card-text">{{ po.content |truncatechars:200 }}</p>
                         <a class="btn btn-primary" href="{{ po.get_detail_url }}">Read more →</a>
                     </div>
                   </div>
@@ -68,7 +68,7 @@
                               <div class="card-body">
                                   <div class="small text-muted">{{ po.created_at }}</div>
                                   <h2 class="card-title h4">{{ po.title }}</h2>
-                                  <p class="card-text">{{ po.content }}</p>
+                                  <p class="card-text">{{ po.content |truncatechars:100 }}</p>
                                   <a class="btn btn-primary" href="{{ po.get_detail_url }}">Read more →</a>
                               </div>
                           </div>
