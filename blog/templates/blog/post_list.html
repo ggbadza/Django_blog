@@ -1,16 +1,16 @@
 {% extends 'blog/base.html' %}
 
 {% block main_area %}
-                {% for po in object_list %}
+                {% for po in post_list %}
                   {% if forloop.first %}
                   <div class="card mb-4">
                     {% if po.head_image %}
-                    <a href="#!"><img class="card-img-top" src="{{ po.head_image.url }}" alt="..." /></a>
+                    <a href="{{ po.get_detail_url }}"><img class="card-img-top" src="{{ po.head_image.url }}" alt="..." /></a>
                     {% else %}
-                    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                    <a href="{{ po.get_detail_url }}"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
                     {% endif %}
                     <div class="card-body">
-                        <div class="small text-muted">{{ po.created_at }}</div>
+                        <div class="small text-muted">{{ po.created_at }} by {{ po.author }}</div>
                         <h2 class="card-title">{{ po.title }}</h2>
                         <p class="card-text">{{ po.content |truncatechars:200 }}</p>
                         <a class="btn btn-primary" href="{{ po.get_detail_url }}">Read more →</a>
@@ -23,12 +23,12 @@
                           <!-- Blog post-->
                           <div class="card mb-4">
                             {% if po.head_image %}
-                            <a href="#!"><img class="card-img-top" src="{{ po.head_image.url }}"  alt="..." /></a>
+                            <a href="{{ po.get_detail_url }}"><img class="card-img-top" src="{{ po.head_image.url }}"  alt="..." /></a>
                             {% else %}
-                            <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                            <a href="{{ po.get_detail_url }}"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
                             {% endif %}
                               <div class="card-body">
-                                  <div class="small text-muted">{{ po.created_at }}</div>
+                                  <div class="small text-muted">{{ po.created_at }} by {{ po.author }}</div>
                                   <h2 class="card-title h4">{{ po.title }}</h2>
                                   <p class="card-text">{{ po.content |truncatechars:100 }}</p>
                                   <a class="btn btn-primary" href="{{ po.get_detail_url }}">Read more →</a>
