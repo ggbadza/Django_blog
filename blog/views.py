@@ -3,16 +3,28 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post, Category
 from django.contrib.auth.mixins import LoginRequiredMixin
+import math
 
 class PostList(ListView):
     model=Post
     ordering='-pk'
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context= super(PostList,self).get_context_data()
         context['categories']=Category.objects.all()
         context['no_category_post_count']=Post.objects.filter(category=None).count()
+
+        page_numbers_range = 10 #최대 페이지 출력 수
+        page = int(self.request.GET.get('page', '1'))
+        pagelow=math.floor(page/10)*10+1
+        page_list=list(i for i in range(pagelow,pagelow+10))
+        context['page_list']=page_list
         return context
+
+    
+
+
 
 class PostDetail(DetailView):
     model=Post
