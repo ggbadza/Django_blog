@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post, Category
 from django.contrib.auth.mixins import LoginRequiredMixin
 import math
+from django.core.exceptions import PermissionDenied
 
 class PostList(ListView):
     model=Post
@@ -50,6 +51,13 @@ class PostCreate(LoginRequiredMixin, CreateView):
 class PostModify(LoginRequiredMixin, UpdateView):
     model=Post
     fields=['title','content','head_image','upload_file','category']
+    template_name='blog/post_modify.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated and request.user == self.get_object().author:
+            return super(PostModify, self).dispatch(request, *args, **kwargs)
+        else:
+            raise PermissionDenied
 
 
 
